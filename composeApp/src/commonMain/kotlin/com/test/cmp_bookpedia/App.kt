@@ -18,32 +18,16 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import cmpbookpedia.composeapp.generated.resources.Res
 import cmpbookpedia.composeapp.generated.resources.compose_multiplatform
+import com.test.cmp_bookpedia.book.presentation.book_list.BookListScreenRoot
+import com.test.cmp_bookpedia.book.presentation.book_list.BookListViewModel
 
 @Composable
 @Preview
 fun App() {
-    MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
-        Column(
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.primaryContainer)
-                .safeContentPadding()
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
-            }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
-                }
-            }
+    BookListScreenRoot(
+        viewModel = remember { BookListViewModel() },
+        onBookClick = {
+
         }
-    }
+    )
 }
