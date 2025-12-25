@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
@@ -20,6 +19,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -128,6 +128,13 @@ private fun BookListScreen(
                         .padding(vertical = 12.dp)
                         .widthIn(max = 700.dp)
                         .fillMaxWidth(),
+                    containerColor = DesertWhite,
+                    indicator = { TabRowDefaults.PrimaryIndicator(
+                            color = SandYellow,
+                            modifier = Modifier
+                                .tabIndicatorOffset(state.selectedTabIndex)
+                        )
+                    }
                 ) {
                     Tab(
                         selected = state.selectedTabIndex == 0,
